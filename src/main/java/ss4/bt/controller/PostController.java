@@ -32,8 +32,8 @@ public class PostController {
         }
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
-    @GetMapping("/list")
-    public ResponseEntity<Iterable<Post>> findAllByCat(@RequestParam ("category") Long catId){
+    @GetMapping("/category/{catId}")
+    public ResponseEntity<Iterable<Post>> findAllByCat(@PathVariable Long catId){
         List<Post> posts = (List<Post>) postService.findAllByCat(catId);
         if (posts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
